@@ -24,6 +24,7 @@
     <ProjectGuid>{f4a43088-d865-4b5b-b5a8-83c25a276cef}</ProjectGuid>
     <RootNamespace>myCalculator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>myCalculator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,12 +128,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalculatorFunctions.cpp" />
-    <ClCompile Include="myCalculator.cpp" />
+    <ClCompile Include="Calculate.cpp" />
+    <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="mathExpression.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ReversePolishNotation.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CalculatorFunctions.h" />
+    <ClInclude Include="Calculate.h" />
+    <ClInclude Include="Calculator.h" />
+    <ClInclude Include="mathExpression.h" />
+    <ClInclude Include="ReversePolishNotation.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
