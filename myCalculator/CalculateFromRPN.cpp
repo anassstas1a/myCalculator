@@ -1,9 +1,12 @@
-#include "Calculate.h"
+#include "CalculateFromRPN.h"
 
-double Calculate::evaluate(ReversePolishNotation rpnString) {
-	if (rpnString.isEmpty()) {
-		throw std::exception("string is empty");
-	}
+CalculateFromRPN::CalculateFromRPN() : rpnString(""), answer(0)
+{}
+
+CalculateFromRPN::CalculateFromRPN(RpnAlgorithm rpn) : rpnString(rpn.getOutputString()), answer(0)
+{}
+
+double CalculateFromRPN::evaluate() {
 	for (int i = 0; i < rpnString.getSize(); i++) {
 
 		if (rpnString[i] == ' ') {
@@ -11,11 +14,11 @@ double Calculate::evaluate(ReversePolishNotation rpnString) {
 		}
 
 		std::string token;
-		if (rpnString.IsOperand(rpnString[i])) {
-			token = getToken(rpnString, i);
+		if (rpnString.isOperand(rpnString[i])) {
+			token = getToken(i);
 			stackWithOperands.push(std::stod(token));
 		}
-		else if (rpnString.IsOperator(rpnString[i])) {
+		else if (rpnString.isOperator(rpnString[i])) {
 			token = rpnString[i];
 			count(token[0]);
 		}
@@ -24,7 +27,7 @@ double Calculate::evaluate(ReversePolishNotation rpnString) {
 	return answer;
 }
 
-std::string Calculate::getToken(ReversePolishNotation rpnString, int& position) {
+std::string CalculateFromRPN::getToken(int& position) {
 	std::string token;
 	while (position < rpnString.getSize() && rpnString[position] != ' ') {
 		token += rpnString[position];
@@ -33,7 +36,7 @@ std::string Calculate::getToken(ReversePolishNotation rpnString, int& position) 
 	return token;
 }
 
-void Calculate::count(char token)
+void CalculateFromRPN::count(char token)
 {
 	double secondOperand = stackWithOperands.top();
 	stackWithOperands.pop();
@@ -53,15 +56,11 @@ void Calculate::count(char token)
 		result = firstOperand * secondOperand;
 		break;
 	case '/':
-		if(secondOperand == 0)
-			throw std::exception("devision by 0");
+		if (secondOperand == 0) {
+			throw DivisionByZeroException();
+		}
 		result = firstOperand / secondOperand;
 		break;
 	}
 	stackWithOperands.push(result);
-}
-
-static std::ostream& operator<< (std::ostream& os, Calculate& ans) {
-	os << ans.answer;
-	return os;
 }

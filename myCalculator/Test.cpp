@@ -1,172 +1,202 @@
 #include "test.h"
 
-void test0()
+void zeroAddition()
 {
-    calculator expression(" 2 + 2 ");
+    Calculator expression(" 2 + 2 ");
     if (expression.getAnswer() == 4)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-
-void test1()
+void oneAddition()
 {
-    calculator expression("1+10+100+1000+10000");
+    Calculator expression("1+10+100+1000+10000");
     if (expression.getAnswer() == 11111)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test2()
+void twoAddition()
 {
-    calculator expression("1-10-100-1000-10000");
-    if (expression.getAnswer() == -11109)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test3()
-{
-    calculator expression("12345679 * 9");
-    if (expression.getAnswer() == 111111111)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test4()
-{
-    calculator expression("10+40*55/20-100");
-    if (expression.getAnswer() == 20)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test5()
-{
-    calculator expression("134+9138-3123*90-213");
-    if (expression.getAnswer() == -272011)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test6()
-{
-    calculator expression("0+0");
+    Calculator expression("0+0");
     if (expression.getAnswer() == 0)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test7()
+void threeAddition()
 {
-    calculator expression("0-0");
-    if (expression.getAnswer() == 0)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test8()
-{
-    calculator expression("0*0");
-    if (expression.getAnswer() == 0)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test9()
-{
-    calculator expression("0/0");
-    if (!isdigit(expression.getAnswer()))
-        std::cout << "\tSUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test10()
-{
-    calculator expression("5/0");
-    if (!isdigit(expression.getAnswer()))
-        std::cout << "\tSUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test11()
-{
-    calculator expression("0/5");
-    if (expression.getAnswer() == 0)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test12()
-{
-    calculator expression("123456789 * 987654321");
-    if (expression.getAnswer() == 121932631112635269)
-        std::cout << "SUCCESS" << '\n';
-    else
-        std::cout << "FAIL" << '\n';
-}
-void test13()
-{
-    calculator expression("3.14 + 2.718");
+    Calculator expression("3.14 + 2.718");
     if (expression.getAnswer() == 3.14 + 2.718)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test14()
+
+void zeroSubtraction()
 {
-    calculator expression("123* ( 3.14 - 2.718 )");
-    if (expression.getAnswer() == 123 * (3.14 - 2.718))
+    Calculator expression("1-10-100-1000-10000");
+    if (expression.getAnswer() == -11109)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test15()
+void oneSubtraction()
 {
-    calculator expression("10*20.2+(40-50+60)/70");
-    if (expression.getAnswer() == 202.7142857142857143)
+    Calculator expression("0-0");
+    if (expression.getAnswer() == 0)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test16()
+
+void zeroMultiplication()
 {
-    calculator expression("((10))*20.2+(40-(50+60))/70");
-    if (expression.getAnswer() == 201)
+    Calculator expression("12345679 * 9");
+    if (expression.getAnswer() == 111111111)
         std::cout << "SUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
-void test17()
+void oneMultiplication()
 {
-    calculator expression("");
+    Calculator expression("0*0");
+    if (expression.getAnswer() == 0)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void twoMultiplication()
+{
+    Calculator expression("123456789 * 987654321");
+    if (expression.getAnswer() == 121932631112635269)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+
+void zeroDivision()
+{
+    Calculator expression("0/5");
+    if (expression.getAnswer() == 0)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void oneDivision()
+{
+    Calculator expression("0/0");
+    if (!isdigit(expression.getAnswer()))
+        std::cout << "\tSUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void twoDivision()
+{
+    Calculator expression("5/0");
     if (!isdigit(expression.getAnswer()))
         std::cout << "\tSUCCESS" << '\n';
     else
         std::cout << "FAIL" << '\n';
 }
 
-
-
-void bigTest()
+void zeroDifferentOperations()
 {
-    test0();
-    test1();
-    test2();
-    test3();
-    test4();
-    test5();
-    test5();
-    test6();
-    test7();
-    test8();
-    test9();
-    test10();
-    test11();
-    test12();
-    test13();
-    test14();
-    test15();
-    test16();
-    test17();
+    Calculator expression("((10))*20.2+(40-(50+60))/70");
+    if (expression.getAnswer() == 201)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void oneDifferentOperations()
+{
+    Calculator expression("10+40*55/20-100");
+    if (expression.getAnswer() == 20)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void twoDifferentOperations()
+{
+    Calculator expression("134+9138-3123*90-213");
+    if (expression.getAnswer() == -272011)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void threeDifferentOperations()
+{
+    Calculator expression("123* ( 3.14 - 2.718 )");
+    if (expression.getAnswer() == 123 * (3.14 - 2.718))
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void fourDifferentOperations()
+{
+    Calculator expression("10*20.2+(40-50+60)/70");
+    if (expression.getAnswer() == 202.7142857142857143)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+
+void zeroEmptyString()
+{
+    Calculator expression("          ");
+    if (expression.getAnswer() == 0)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+void oneEmptyString()
+{
+    Calculator expression("");
+    if (expression.getAnswer() == 0)
+        std::cout << "SUCCESS" << '\n';
+    else
+        std::cout << "FAIL" << '\n';
+}
+
+void TestsRunner::runTests()
+{
+    additionTest();
+    subtractionTest();
+    multiplicationTest();
+    divisionTest();
+    differentOperationsTest();
+    emptyStringTest();
+}
+
+void TestsRunner::additionTest() {
+    zeroAddition();
+    oneAddition();
+    twoAddition();
+    threeAddition();
+}
+void TestsRunner::subtractionTest() {
+    zeroSubtraction();
+    oneSubtraction();
+}
+void TestsRunner::multiplicationTest() {
+    zeroMultiplication();
+    oneMultiplication();
+    twoMultiplication();
+}
+void TestsRunner::divisionTest() {
+    zeroDivision();
+    oneDivision();
+    twoDivision();
+}
+void TestsRunner::differentOperationsTest(){
+    zeroDifferentOperations();
+    oneDifferentOperations();
+    twoDifferentOperations();
+    twoDifferentOperations();
+    threeDifferentOperations();
+    fourDifferentOperations();
+}
+void TestsRunner::emptyStringTest() {
+    void zeroEmptyString();
+    void oneEmptyString();
 }

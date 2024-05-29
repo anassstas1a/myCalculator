@@ -1,15 +1,17 @@
 #pragma once
-#include "Calculate.h"
-#include "ReversePolishNotation.h"
-#include "mathExpression.h"
+#include "Calculator.h"
+#include <string>
+#include "MathExpression.h"
+#include <memory>
+#include "RpnStrategy.h"
+#include "CalculationEngine.h"
 
-class calculator {
+class Calculator
+{
+private:
+	std::string string;
+	bool isBlank();
 public:
-	std::string exp;
-
-	calculator(std::string exp);
+	Calculator(std::string str);
 	double getAnswer();
 };
-
-
-

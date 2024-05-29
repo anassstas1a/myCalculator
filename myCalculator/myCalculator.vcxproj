@@ -128,18 +128,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Calculate.cpp" />
+    <ClCompile Include="CalculateFromRPN.cpp" />
+    <ClCompile Include="CalculationEngine.cpp" />
     <ClCompile Include="Calculator.cpp" />
-    <ClCompile Include="mathExpression.cpp" />
+    <ClCompile Include="DivisionByZeroException.cpp" />
+    <ClCompile Include="MathExpression.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ReversePolishNotation.cpp" />
+    <ClCompile Include="RpnAlgorithm.cpp" />
+    <ClCompile Include="RpnStrategy.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Calculate.h" />
+    <ClInclude Include="CalculationEngine.h" />
     <ClInclude Include="Calculator.h" />
-    <ClInclude Include="mathExpression.h" />
-    <ClInclude Include="ReversePolishNotation.h" />
+    <ClInclude Include="DivisionByZeroException.h" />
+    <ClInclude Include="Strategy.h" />
+    <ClInclude Include="ICalculate.h" />
+    <ClInclude Include="IAlgorithm.h" />
+    <ClInclude Include="CalculateFromRPN.h" />
+    <ClInclude Include="MathExpression.h" />
+    <ClInclude Include="RpnAlgorithm.h" />
+    <ClInclude Include="RpnStrategy.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

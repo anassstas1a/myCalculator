@@ -1,23 +1,25 @@
 #include "Calculator.h"
 
-calculator::calculator(std::string exp) : exp(exp)
+Calculator::Calculator(std::string str) : string(str)
 {}
 
-double calculator::getAnswer() {
+double Calculator::getAnswer()
+{
 	try {
-		mathExpression expression;
-		expression.setExpression(exp);
+		if (isBlank()) {
+			return 0;
+		}
+		auto expressionString = std::make_unique<RpnStrategy>(string);
+		CalculationEngine engine(std::move(expressionString));
 
-		ReversePolishNotation rpn;
-		rpn.toRPN(expression);
-
-		Calculate answer;
-		answer.evaluate(rpn);
-		return answer.answer;
+		double answer = engine.answer();
+		return answer;
 	}
-	catch (std::exception& e) {
-		std::cout << e.what();
+	catch (const DivisionByZeroException& e) {
+		std::cerr << e.what();
 	}
-	
 }
 
+bool Calculator::isBlank() {
+	return std::all_of(string.begin(), string.end(), std::isspace);
+}
