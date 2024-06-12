@@ -1,5 +1,5 @@
 #pragma once
 class ICalculate {
-public:
-	virtual double evaluate() = 0;
+ public:
+  virtual double evaluate() = 0;
 };

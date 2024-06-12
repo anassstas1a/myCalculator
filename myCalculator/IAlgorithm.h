@@ -2,6 +2,6 @@
 #include "MathExpression.h"
 
 class IAlgorithm {
-public:
-	virtual MathExpression conversionToAMachineReadableString() = 0;
+ public:
+  virtual MathExpression conversionToAMachineReadableString() = 0;
 };

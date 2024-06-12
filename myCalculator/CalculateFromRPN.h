@@ -1,21 +1,22 @@
 #pragma once
-#include "RpnAlgorithm.h"
-#include "ICalculate.h"
-#include <stack>
 #include <iostream>
+#include <stack>
+
 #include "DivisionByZeroException.h"
+#include "ICalculate.h"
+#include "RpnAlgorithm.h"
 
 class CalculateFromRPN : public ICalculate {
-private:
-	MathExpression rpnString;
-	double answer;
-	std::stack<double> stackWithOperands;
+ private:
+  MathExpression rpnString;
+  double answer;
+  std::stack<double> stackWithOperands;
 
-	std::string getToken(int& position);
-	void count(char token);
+  std::string getToken(int& position);
+  void count(char token);
 
-public:
-	CalculateFromRPN();
-	CalculateFromRPN(RpnAlgorithm rpn);
-	double evaluate();
+ public:
+  CalculateFromRPN();
+  CalculateFromRPN(RpnAlgorithm rpn);
+  double evaluate();
 };

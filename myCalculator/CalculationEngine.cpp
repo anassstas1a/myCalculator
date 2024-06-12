@@ -1,12 +1,10 @@
 #include "CalculationEngine.h"
 
-void CalculationEngine::setCalculationEngine(std::unique_ptr<Strategy> newCalculatorEngine)
-{
-	engine = std::move(newCalculatorEngine);
+void CalculationEngine::setCalculationEngine(
+    std::unique_ptr<Strategy> newCalculatorEngine) {
+  engine = std::move(newCalculatorEngine);
 }
-CalculationEngine::CalculationEngine(std::unique_ptr<Strategy> newCalculatorEngine) : engine(std::move(newCalculatorEngine))
-{}
-double CalculationEngine::answer()
-{
-	return engine->evaluate();
-}
+CalculationEngine::CalculationEngine(
+    std::unique_ptr<Strategy> newCalculatorEngine)
+    : engine(std::move(newCalculatorEngine)) {}
+double CalculationEngine::answer() { return engine->evaluate(); }

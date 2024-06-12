@@ -71,7 +71,7 @@
     <ClInclude Include="CalculationEngine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Calculator.h">
+    <ClInclude Include="Calculator.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="DivisionByZeroException.h">

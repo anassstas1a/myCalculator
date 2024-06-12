@@ -71,6 +71,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\anast\source\repos\myCalculator\myCalculator;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>C:\Users\anast\source\repos\myCalculator\myCalculator;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -119,6 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\anast\source\repos\myCalculator\myCalculator</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalculationEngine.h" />
-    <ClInclude Include="Calculator.h" />
+    <ClInclude Include="Calculator.hpp" />
     <ClInclude Include="DivisionByZeroException.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="ICalculate.h" />

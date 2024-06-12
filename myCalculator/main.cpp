@@ -1,19 +1,14 @@
-﻿#include "test.h"
-#include "Calculator.h"
+﻿#include "Calculator.hpp"
+#include "test.h"
 
-bool isSpace(unsigned char c) {
-	return std::isspace(c);
-}
+int main() {
+  std::string string;
+  getline(std::cin, string);
 
-int main()
-{
-	std::string string;
-	getline(std::cin, string);
+  Calculator сalculator = string;
+  std::cout << сalculator.getAnswer();
 
-	Calculator Calculator = string;
-	std::cout << Calculator.getAnswer();
-
-	std::cout << '\n';
-	TestsRunner test;
-	test.runTests();
+  std::cout << '\n';
+  TestsRunner test;
+  test.runTests();
 }
