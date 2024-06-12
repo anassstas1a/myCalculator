@@ -16,7 +16,8 @@ class CalculateFromRPN : public ICalculate {
   void count(char token);
 
  public:
+  virtual ~CalculateFromRPN();
   CalculateFromRPN();
   CalculateFromRPN(RpnAlgorithm rpn);
-  double evaluate();
+  double evaluate() override;
 };

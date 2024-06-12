@@ -1,6 +1,6 @@
 #include "RpnAlgorithm.h"
 
-RpnAlgorithm::RpnAlgorithm() : inputString("") {}
+RpnAlgorithm::RpnAlgorithm() : inputString() {}
 RpnAlgorithm::RpnAlgorithm(MathExpression exp) : inputString(exp) {}
 
 MathExpression RpnAlgorithm::conversionToAMachineReadableString() {

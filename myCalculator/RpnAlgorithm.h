@@ -15,6 +15,6 @@ class RpnAlgorithm : public IAlgorithm {
   RpnAlgorithm();
   RpnAlgorithm(MathExpression exp);
 
-  MathExpression conversionToAMachineReadableString();
+  MathExpression conversionToAMachineReadableString() override;
   MathExpression getOutputString();
 };

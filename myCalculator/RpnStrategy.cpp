@@ -1,11 +1,10 @@
 #include "RpnStrategy.h"
 
-RpnStrategy::RpnStrategy(std::string str) : expressionString(str) {}
-RpnStrategy::RpnStrategy(MathExpression str) : expressionString(str) {}
-double RpnStrategy::evaluate() {
-  rpnString = expressionString;
+RpnStrategy::~RpnStrategy() = default;
+RpnStrategy::RpnStrategy(MathExpression str) : rpnString(str) {}
+double RpnStrategy::result() {
   rpnString.conversionToAMachineReadableString();
-
-  answer = rpnString;
-  return answer.evaluate();
+  answerFromRpnString = rpnString;
+  double answer = answerFromRpnString.evaluate();
+  return answer;
 }

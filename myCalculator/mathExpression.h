@@ -8,13 +8,16 @@ class MathExpression {
  public:
   MathExpression();
   MathExpression(std::string str);
-  MathExpression(const MathExpression& e);
-  std::string getExpression() const;
+  const std::string& getExpression() const;
+  std::string& getExpression();
   int getSize() const;
   bool isEmpty() const;
 
   char operator[](int i);
   MathExpression operator+=(char c);
+
+  std::string::iterator begin();
+  std::string::iterator end();
 
   int precedence(char symbol);
   bool isOperator(char symbol);

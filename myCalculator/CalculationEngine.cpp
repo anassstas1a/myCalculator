@@ -7,4 +7,5 @@ void CalculationEngine::setCalculationEngine(
 CalculationEngine::CalculationEngine(
     std::unique_ptr<Strategy> newCalculatorEngine)
     : engine(std::move(newCalculatorEngine)) {}
-double CalculationEngine::answer() { return engine->evaluate(); }
+
+double CalculationEngine::answer() { return engine->result(); }

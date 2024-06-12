@@ -6,12 +6,11 @@
 
 class RpnStrategy : public Strategy {
  private:
-  MathExpression expressionString;
   RpnAlgorithm rpnString;
-  CalculateFromRPN answer;
+  CalculateFromRPN answerFromRpnString;
 
  public:
-  RpnStrategy(std::string str);
+  virtual ~RpnStrategy();
   RpnStrategy(MathExpression str);
-  double evaluate();
+  double result() override;
 };

@@ -1,6 +1,8 @@
 #include "CalculateFromRPN.h"
 
-CalculateFromRPN::CalculateFromRPN() : rpnString(""), answer(0) {}
+CalculateFromRPN::~CalculateFromRPN() = default;
+
+CalculateFromRPN::CalculateFromRPN() : rpnString(), answer(0) {}
 
 CalculateFromRPN::CalculateFromRPN(RpnAlgorithm rpn)
     : rpnString(rpn.getOutputString()), answer(0) {}

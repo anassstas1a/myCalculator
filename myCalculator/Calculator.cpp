@@ -1,13 +1,13 @@
 #include "Calculator.hpp"
 
-Calculator::Calculator(std::string str) : string(str) {}
+Calculator::Calculator(std::string str) : expression(str) {}
 
 double Calculator::getAnswer() {
   try {
     if (isBlank()) {
       return 0;
     }
-    auto expressionString = std::make_unique<RpnStrategy>(string);
+    auto expressionString = std::make_unique<RpnStrategy>(expression);
     CalculationEngine engine(std::move(expressionString));
 
     double answer = engine.answer();
@@ -18,5 +18,5 @@ double Calculator::getAnswer() {
 }
 
 bool Calculator::isBlank() {
-  return std::all_of(string.begin(), string.end(), std::isspace);
+  return std::all_of(expression.begin(), expression.end(), std::isspace);
 }

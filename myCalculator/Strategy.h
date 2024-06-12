@@ -1,5 +1,6 @@
 #pragma once
 class Strategy {
  public:
-  virtual double evaluate() = 0;
+  virtual ~Strategy() = default;
+  virtual double result() = 0;
 };

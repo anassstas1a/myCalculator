@@ -8,7 +8,7 @@
 
 class Calculator {
  private:
-  std::string string;
+  MathExpression expression;
   bool isBlank();
 
  public:

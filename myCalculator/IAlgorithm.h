@@ -3,5 +3,6 @@
 
 class IAlgorithm {
  public:
+  virtual ~IAlgorithm() = default;
   virtual MathExpression conversionToAMachineReadableString() = 0;
 };
