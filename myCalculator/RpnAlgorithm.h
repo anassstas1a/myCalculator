@@ -4,6 +4,7 @@
 
 #include "IAlgorithm.h"
 #include "MathExpression.h"
+#include <iostream>
 
 class RpnAlgorithm : public IAlgorithm {
  private:

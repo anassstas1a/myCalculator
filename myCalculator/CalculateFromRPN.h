@@ -13,7 +13,9 @@ class CalculateFromRPN : public ICalculate {
   std::stack<double> stackWithOperands;
 
   std::string getToken(int& position);
-  void count(char token);
+  void countUnary(char token);
+  void countBinary(char token);
+  void countTrigonometric(char token);
 
  public:
   virtual ~CalculateFromRPN();

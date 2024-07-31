@@ -1,12 +1,12 @@
-﻿#include "Calculator.hpp"
+﻿#include "Calculator.h"
 #include "test.h"
 
 int main() {
   std::string string;
   getline(std::cin, string);
 
-  Calculator сalculator = string;
-  std::cout << сalculator.getAnswer();
+  Calculator someExpression = string;
+  std::cout << someExpression.getAnswer();
 
   std::cout << '\n';
   TestsRunner test;

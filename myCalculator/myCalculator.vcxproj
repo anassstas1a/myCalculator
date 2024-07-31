@@ -145,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalculationEngine.h" />
-    <ClInclude Include="Calculator.hpp" />
+    <ClInclude Include="Calculator.h" />
     <ClInclude Include="DivisionByZeroException.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="ICalculate.h" />

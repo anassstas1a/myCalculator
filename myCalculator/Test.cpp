@@ -88,6 +88,14 @@ void twoDivision() {
     std::cout << "FAIL" << '\n';
 }
 
+void oneTrigonometricFunction() {
+  Calculator expression("sin(1/2)");
+  if (expression.getAnswer() == 0.479426)
+    std::cout << "SUCCESS" << '\n';
+  else
+    std::cout << "FAIL" << '\n';
+}
+
 void zeroDifferentOperations() {
   Calculator expression("((10))*20.2+(40-(50+60))/70");
   if (expression.getAnswer() == 201)
@@ -144,6 +152,7 @@ void TestsRunner::runTests() {
   subtractionTest();
   multiplicationTest();
   divisionTest();
+  trigonometricFunctionTest();
   differentOperationsTest();
   emptyStringTest();
 }
@@ -168,6 +177,7 @@ void TestsRunner::divisionTest() {
   oneDivision();
   twoDivision();
 }
+void TestsRunner::trigonometricFunctionTest() { oneTrigonometricFunction(); }
 void TestsRunner::differentOperationsTest() {
   zeroDifferentOperations();
   oneDifferentOperations();

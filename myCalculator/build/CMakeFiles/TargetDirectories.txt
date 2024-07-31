@@ -1,0 +1,3 @@
+C:/Users/anast/source/repos/myCalculator/myCalculator/build/CMakeFiles/MyCalculator.dir
+C:/Users/anast/source/repos/myCalculator/myCalculator/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/anast/source/repos/myCalculator/myCalculator/build/CMakeFiles/ZERO_CHECK.dir

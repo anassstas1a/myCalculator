@@ -1,5 +1,5 @@
 #pragma once
-#include "Calculator.hpp"
+#include "Calculator.h"
 void zeroAddition();
 void oneAddition();
 void twoAddition();
@@ -16,6 +16,8 @@ void zeroDivision();
 void oneDivision();
 void twoDivision();
 
+void oneTrigonometricFunction();
+
 void zeroDifferentOperations();
 void oneDifferentOperations();
 void twoDifferentOperations();
@@ -31,6 +33,7 @@ class TestsRunner {
   void subtractionTest();
   void multiplicationTest();
   void divisionTest();
+  void trigonometricFunctionTest();
   void differentOperationsTest();
   void emptyStringTest();
 

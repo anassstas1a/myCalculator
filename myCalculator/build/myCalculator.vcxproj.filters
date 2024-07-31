@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\Algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\CalculateFromRPN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\CalculationEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\Calculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\DivisionByZeroException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\IAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\MathExpression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\RpnAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\RpnStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\anast\source\repos\myCalculator\myCalculator\src\Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\anast\source\repos\myCalculator\myCalculator\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8724075D-597E-3B42-8D74-10A45D87481E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

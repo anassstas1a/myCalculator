@@ -1,4 +1,4 @@
-#include "Calculator.hpp"
+#include "Calculator.h"
 
 Calculator::Calculator(std::string str) : expression(str) {}
 
