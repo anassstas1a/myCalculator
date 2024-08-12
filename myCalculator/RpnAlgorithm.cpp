@@ -3,7 +3,7 @@
 RpnAlgorithm::RpnAlgorithm() : inputString() {}
 RpnAlgorithm::RpnAlgorithm(MathExpression exp) : inputString(exp) {}
 
-MathExpression RpnAlgorithm::conversionToAMachineReadableString() {
+MathExpression RpnAlgorithm::convertStringUsingAlgorithm() {
   for (int i = 0; i < inputString.getSize(); i++) {
     if (inputString[i] == ' ') {
       continue;
@@ -11,6 +11,7 @@ MathExpression RpnAlgorithm::conversionToAMachineReadableString() {
     if (inputString.isEmpty()) {
       return MathExpression("");
     }
+
     if (inputString.isOperand(inputString[i])) {
       while (i < inputString.getSize() &&
              inputString.isOperand(inputString[i])) {
@@ -25,27 +26,19 @@ MathExpression RpnAlgorithm::conversionToAMachineReadableString() {
       --i;
     }
 
-    // Если это оператор!
+    if (inputString.isUnaryMinus(inputString, i)) {
+      stackWithOperators.push(
+          inputString.getSymbolDenotingUnaryOperation(inputString[i]));
+    }
 
-    if (inputString.isBinaryOperator(inputString[i])) {
-      if ((inputString[i] == '-') &&
-          (i == 0 || inputString[i - 1] == '(' ||
-           inputString.isBinaryOperator(inputString[i - 1]) ||
-           inputString.isUnaryOperator(inputString[i - 1]))) {
-        stackWithOperators.push('#');
-      } else {
-        while (!stackWithOperators.empty() &&
-               inputString.precedence(stackWithOperators.top()) >=
-                   inputString.precedence(inputString[i]) &&
-               !inputString.isOpenParenthesis(stackWithOperators.top())) {
-          outputString += stackWithOperators.top();
-          outputString += ' ';
-          stackWithOperators.pop();
-        }
-        stackWithOperators.push(inputString[i]);
+    else if (inputString.isBinaryOperator(inputString[i])) {
+      while (topOperatorHasHigherPrecedence(inputString[i])) {
+        appendTopOperatorToOutputString();
       }
+      stackWithOperators.push(inputString[i]);
+    }
 
-    } else if (inputString.isLetter(inputString[i])) {
+    else if (inputString.isLetter(inputString[i])) {
       std::string token;
       while (i < inputString.getSize() &&
              inputString.isLetter(inputString[i])) {
@@ -53,39 +46,62 @@ MathExpression RpnAlgorithm::conversionToAMachineReadableString() {
         ++i;
       }
       --i;
-      // std::cout << "token = " << token << '\n';
-      // std::cout << "token[0] = " << token[0] << '\n';
-      // std::cout << "inputString.isTrigonometric(token)"
-      //<< inputString.isTrigonometric(token) << '\n';
-      if (inputString.isTrigonometric(token)) {
-        while (!stackWithOperators.empty() &&
-
-               inputString.precedence(stackWithOperators.top()) >=
-                   inputString.precedence(token[0]) &&
-               !inputString.isOpenParenthesis(stackWithOperators.top())) {
-          outputString += stackWithOperators.top();
-          outputString += ' ';
-          stackWithOperators.pop();
+      if (inputString.isUnaryOperator(token)) {
+        while (topOperatorHasHigherPrecedence(token)) {
+          appendTopOperatorToOutputString();
         }
-        stackWithOperators.push(token[0]);
+        stackWithOperators.push(
+            inputString.getSymbolDenotingUnaryOperation(token));
       }
-    } else if (inputString.isOpenParenthesis(inputString[i])) {
+    }
+
+    else if (inputString.isOpenParenthesis(inputString[i])) {
       stackWithOperators.push(inputString[i]);
-    } else if (inputString.isCloseParenthesis(inputString[i])) {
-      while (!inputString.isOpenParenthesis(stackWithOperators.top())) {
-        outputString += stackWithOperators.top();
-        outputString += ' ';
-        stackWithOperators.pop();
+    }
+
+    else if (inputString.isCloseParenthesis(inputString[i])) {
+      if (stackWithOperators.empty()) {
+        throw std::runtime_error(
+            "Mismatched parentheses: too many closing parentheses.");
       }
-      stackWithOperators.pop();
+      while (!stackWithOperators.empty() &&
+             !inputString.isOpenParenthesis(stackWithOperators.top())) {
+        appendTopOperatorToOutputString();
+      }
+
+      if (!stackWithOperators.empty() &&
+          inputString.isOpenParenthesis(stackWithOperators.top())) {
+        stackWithOperators.pop();
+      } else {
+        throw std::runtime_error(
+            "Mismatched parentheses: no matching opening parenthesis.");
+      }
     }
   }
 
   while (!stackWithOperators.empty()) {
-    outputString += stackWithOperators.top();
-    outputString += ' ';
-    stackWithOperators.pop();
+    appendTopOperatorToOutputString();
   }
+
   return outputString;
 }
+
+bool RpnAlgorithm::topOperatorHasHigherPrecedence(char someOperator) {
+  return (!stackWithOperators.empty() &&
+          inputString.precedence(stackWithOperators.top()) >=
+              inputString.precedence(someOperator) &&
+          !inputString.isOpenParenthesis(stackWithOperators.top()));
+}
+bool RpnAlgorithm::topOperatorHasHigherPrecedence(std::string someOperator) {
+  return (!stackWithOperators.empty() &&
+          inputString.precedence(stackWithOperators.top()) >=
+              inputString.precedence(someOperator) &&
+          !inputString.isOpenParenthesis(stackWithOperators.top()));
+}
+void RpnAlgorithm::appendTopOperatorToOutputString() {
+  outputString += stackWithOperators.top();
+  outputString += ' ';
+  stackWithOperators.pop();
+}
+
 MathExpression RpnAlgorithm::getOutputString() { return outputString; }

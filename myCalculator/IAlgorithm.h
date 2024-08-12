@@ -4,5 +4,5 @@
 class IAlgorithm {
  public:
   virtual ~IAlgorithm() = default;
-  virtual MathExpression conversionToAMachineReadableString() = 0;
+  virtual MathExpression convertStringUsingAlgorithm() = 0;
 };

@@ -18,24 +18,33 @@ double CalculateFromRPN::evaluate() {
     std::string token;
     if (rpnString.isOperand(rpnString[i])) {
       token = getToken(i);
-      // std::cout << "TOKEN = " << token << '\n';
-      stackWithOperands.push(std::stod(token));
+      if (rpnString.isMathÑonstants(token[0])) {
+        stackWithOperands.push(rpnString.getMathÑonstant(token[0]));
+      } else {
+        stackWithOperands.push(std::stod(token));
+      }
 
     } else if (rpnString.isUnaryOperator(rpnString[i])) {
-      token = rpnString[i];
-      // std::cout << "TOKEN = " << token << '\n';
-      countUnary(token[0]);
-    } else if (rpnString.isBinaryOperator(rpnString[i])) {
-      token = rpnString[i];
-      // std::cout << "TOKEN = " << token << '\n';
-      countBinary(token[0]);
-    } else if (rpnString.isTrigonometricChar(rpnString[i])) {
-      token = rpnString[i];
-      // std::cout << "TOKEN = " << token << '\n';
-      countTrigonometric(token[0]);
+      if (!stackWithOperands.empty()) {
+        calculateUnary(rpnString[i]);
+      } else {
+        throw std::runtime_error("incorrectly entered expression.");
+      }
+    }
+
+    else if (rpnString.isBinaryOperator(rpnString[i])) {
+      if (stackWithOperands.size() >= 2) {
+        calculateBinary(rpnString[i]);
+      } else {
+        throw std::runtime_error("incorrectly entered expression.");
+      }
     }
   }
   answer = stackWithOperands.top();
+  stackWithOperands.pop();
+  if (!stackWithOperands.empty()) {
+    throw std::runtime_error("incorrectly entered expression.");
+  }
   return answer;
 }
 
@@ -48,64 +57,23 @@ std::string CalculateFromRPN::getToken(int& position) {
   return token;
 }
 
-void CalculateFromRPN::countUnary(char token) {
+void CalculateFromRPN::calculateUnary(char token) {
   double firstOperand = stackWithOperands.top();
   stackWithOperands.pop();
+
   double result;
-  switch (token) {
-    case '#':
-      result = -(firstOperand);
-      break;
-  }
+  result = rpnString.getUnaryFunction(token, firstOperand);
   stackWithOperands.push(result);
 }
 
-void CalculateFromRPN::countTrigonometric(char token) {
-  double firstOperand = stackWithOperands.top();
-  stackWithOperands.pop();
-  double result;
-  switch (token) {
-    case 's':
-      result = sin(firstOperand);
-      break;
-    case 'c':
-      result = cos(firstOperand);
-      break;
-    case 't':
-      result = tan(firstOperand);
-      break;
-    case 'g':
-      result = cos(firstOperand) / sin(firstOperand);
-      break;
-  }
-  stackWithOperands.push(result);
-}
-
-void CalculateFromRPN::countBinary(char token) {
+void CalculateFromRPN::calculateBinary(char token) {
   double secondOperand = stackWithOperands.top();
   stackWithOperands.pop();
+
   double firstOperand = stackWithOperands.top();
   stackWithOperands.pop();
+
   double result;
-  switch (token) {
-    case '+':
-      result = firstOperand + secondOperand;
-      break;
-    case '-':
-      result = firstOperand - secondOperand;
-      break;
-    case '*':
-      result = firstOperand * secondOperand;
-      break;
-    case '/':
-      if (secondOperand == 0) {
-        throw DivisionByZeroException();
-      }
-      result = firstOperand / secondOperand;
-      break;
-    case '^':
-      result = pow(firstOperand, secondOperand);
-      break;
-  }
+  result = rpnString.getBinaryFunction(token, firstOperand, secondOperand);
   stackWithOperands.push(result);
 }

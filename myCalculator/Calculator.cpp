@@ -14,6 +14,8 @@ double Calculator::getAnswer() {
     return answer;
   } catch (const DivisionByZeroException& e) {
     std::cerr << e.what();
+  } catch (std::runtime_error& e) {
+    std::cerr << e.what();
   }
 }
 

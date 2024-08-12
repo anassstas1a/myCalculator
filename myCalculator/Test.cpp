@@ -96,6 +96,22 @@ void oneTrigonometricFunction() {
     std::cout << "FAIL" << '\n';
 }
 
+void twoTrigonometricFunction() {
+  Calculator expression("sin(10.5) ^ 2 + cos(10.5) ^ 2");
+  if (expression.getAnswer() == 1)  //???
+    std::cout << "SUCCESS" << '\n';
+  else
+    std::cout << "FAIL" << '\n';
+}
+
+void threeTrigonometricFunction() {
+  Calculator expression("sin(1 / 2 * p)");
+  if (expression.getAnswer() == 1)
+    std::cout << "SUCCESS" << '\n';
+  else
+    std::cout << "FAIL" << '\n';
+}
+
 void zeroDifferentOperations() {
   Calculator expression("((10))*20.2+(40-(50+60))/70");
   if (expression.getAnswer() == 201)
@@ -177,7 +193,11 @@ void TestsRunner::divisionTest() {
   oneDivision();
   twoDivision();
 }
-void TestsRunner::trigonometricFunctionTest() { oneTrigonometricFunction(); }
+void TestsRunner::trigonometricFunctionTest() {
+  oneTrigonometricFunction();
+  twoTrigonometricFunction();
+  threeTrigonometricFunction();
+}
 void TestsRunner::differentOperationsTest() {
   zeroDifferentOperations();
   oneDifferentOperations();

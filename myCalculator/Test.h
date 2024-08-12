@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+
 #include "Calculator.h"
 void zeroAddition();
 void oneAddition();
@@ -17,6 +19,8 @@ void oneDivision();
 void twoDivision();
 
 void oneTrigonometricFunction();
+void twoTrigonometricFunction();
+void threeTrigonometricFunction();
 
 void zeroDifferentOperations();
 void oneDifferentOperations();

@@ -1,6 +1,8 @@
 #pragma once
+#include <functional>
 #include <iostream>
 #include <stack>
+#include <string>
 
 #include "DivisionByZeroException.h"
 #include "ICalculate.h"
@@ -13,9 +15,8 @@ class CalculateFromRPN : public ICalculate {
   std::stack<double> stackWithOperands;
 
   std::string getToken(int& position);
-  void countUnary(char token);
-  void countBinary(char token);
-  void countTrigonometric(char token);
+  void calculateUnary(char token);
+  void calculateBinary(char token);
 
  public:
   virtual ~CalculateFromRPN();
