@@ -31,6 +31,8 @@ void fourDifferentOperations();
 void zeroEmptyString();
 void oneEmptyString();
 
+void zeroFactorial();
+
 class TestsRunner {
  private:
   void additionTest();
@@ -40,6 +42,7 @@ class TestsRunner {
   void trigonometricFunctionTest();
   void differentOperationsTest();
   void emptyStringTest();
+  void factorialTest();
 
  public:
   void runTests();

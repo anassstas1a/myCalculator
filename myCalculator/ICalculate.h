@@ -2,5 +2,5 @@
 class ICalculate {
  public:
   virtual ~ICalculate() = default;
-  virtual double evaluate() = 0;
+  virtual double calculate() = 0;
 };

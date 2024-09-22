@@ -5,6 +5,7 @@
 
 #include "IAlgorithm.h"
 #include "MathExpression.h"
+#include "Separator.h"
 
 class RpnAlgorithm : public IAlgorithm {
  private:
@@ -12,13 +13,13 @@ class RpnAlgorithm : public IAlgorithm {
   MathExpression outputString;
   std::stack<char> stackWithOperators;
 
+  bool isUnaryMinus(char symbol) { return symbol == '#'; }
   bool topOperatorHasHigherPrecedence(char someOperator);
-  bool topOperatorHasHigherPrecedence(std::string someOperator);
   void appendTopOperatorToOutputString();
 
  public:
   RpnAlgorithm();
-  RpnAlgorithm(MathExpression exp);
+  RpnAlgorithm(Separator separator);
 
   MathExpression convertStringUsingAlgorithm() override;
   MathExpression getOutputString();

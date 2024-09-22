@@ -9,4 +9,4 @@ CalculationEngine::CalculationEngine(
     std::unique_ptr<Strategy> newCalculatorEngine)
     : engine(std::move(newCalculatorEngine)) {}
 
-double CalculationEngine::answer() { return engine->result(); }
+double CalculationEngine::calculate() { return engine->calculate(); }

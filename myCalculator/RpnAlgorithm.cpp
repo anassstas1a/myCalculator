@@ -1,7 +1,10 @@
 #include "RpnAlgorithm.h"
 
-RpnAlgorithm::RpnAlgorithm() : inputString() {}
-RpnAlgorithm::RpnAlgorithm(MathExpression exp) : inputString(exp) {}
+RpnAlgorithm::RpnAlgorithm()
+    : inputString(), outputString(), stackWithOperators() {}
+RpnAlgorithm::RpnAlgorithm(Separator separator) {
+  inputString = separator.getOutputString();
+}
 
 MathExpression RpnAlgorithm::convertStringUsingAlgorithm() {
   for (int i = 0; i < inputString.getSize(); i++) {
@@ -9,7 +12,7 @@ MathExpression RpnAlgorithm::convertStringUsingAlgorithm() {
       continue;
     }
     if (inputString.isEmpty()) {
-      return MathExpression("");
+      return MathExpression();
     }
 
     if (inputString.isOperand(inputString[i])) {
@@ -17,42 +20,17 @@ MathExpression RpnAlgorithm::convertStringUsingAlgorithm() {
              inputString.isOperand(inputString[i])) {
         outputString += inputString[i];
         ++i;
-        if (inputString[i] == ',') {
-          outputString += '.';
-          ++i;
-        }
       }
       outputString += ' ';
       --i;
     }
-
-    if (inputString.isUnaryMinus(inputString, i)) {
-      stackWithOperators.push(
-          inputString.getSymbolDenotingUnaryOperation(inputString[i]));
-    }
-
-    else if (inputString.isBinaryOperator(inputString[i])) {
-      while (topOperatorHasHigherPrecedence(inputString[i])) {
+    if (inputString.isUnaryOperator(inputString[i]) ||
+        inputString.isBinaryOperator(inputString[i])) {
+      while (topOperatorHasHigherPrecedence(inputString[i]) &&
+             (!isUnaryMinus(inputString[i]))) {
         appendTopOperatorToOutputString();
       }
       stackWithOperators.push(inputString[i]);
-    }
-
-    else if (inputString.isLetter(inputString[i])) {
-      std::string token;
-      while (i < inputString.getSize() &&
-             inputString.isLetter(inputString[i])) {
-        token += inputString[i];
-        ++i;
-      }
-      --i;
-      if (inputString.isUnaryOperator(token)) {
-        while (topOperatorHasHigherPrecedence(token)) {
-          appendTopOperatorToOutputString();
-        }
-        stackWithOperators.push(
-            inputString.getSymbolDenotingUnaryOperation(token));
-      }
     }
 
     else if (inputString.isOpenParenthesis(inputString[i])) {
@@ -82,17 +60,10 @@ MathExpression RpnAlgorithm::convertStringUsingAlgorithm() {
   while (!stackWithOperators.empty()) {
     appendTopOperatorToOutputString();
   }
-
   return outputString;
 }
 
 bool RpnAlgorithm::topOperatorHasHigherPrecedence(char someOperator) {
-  return (!stackWithOperators.empty() &&
-          inputString.precedence(stackWithOperators.top()) >=
-              inputString.precedence(someOperator) &&
-          !inputString.isOpenParenthesis(stackWithOperators.top()));
-}
-bool RpnAlgorithm::topOperatorHasHigherPrecedence(std::string someOperator) {
   return (!stackWithOperators.empty() &&
           inputString.precedence(stackWithOperators.top()) >=
               inputString.precedence(someOperator) &&
@@ -103,5 +74,4 @@ void RpnAlgorithm::appendTopOperatorToOutputString() {
   outputString += ' ';
   stackWithOperators.pop();
 }
-
 MathExpression RpnAlgorithm::getOutputString() { return outputString; }

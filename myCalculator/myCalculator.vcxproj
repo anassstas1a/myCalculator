@@ -141,12 +141,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RpnAlgorithm.cpp" />
     <ClCompile Include="RpnStrategy.cpp" />
+    <ClCompile Include="Separator.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalculationEngine.h" />
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="DivisionByZeroException.h" />
+    <ClInclude Include="Separator.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="ICalculate.h" />
     <ClInclude Include="IAlgorithm.h" />

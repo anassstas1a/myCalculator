@@ -1,7 +1,5 @@
 #include "MathExpression.h"
-
 MathExpression::MathExpression() : expression() {}
-
 MathExpression::MathExpression(std::string str) : expression(str) {}
 
 const std::string& MathExpression::getExpression() const { return expression; }
@@ -10,9 +8,13 @@ std::string& MathExpression::getExpression() { return expression; }
 int MathExpression::getSize() const { return expression.size(); }
 bool MathExpression::isEmpty() const { return expression.empty(); }
 
-char MathExpression::operator[](int i) { return expression[i]; }
-MathExpression MathExpression::operator+=(char c) { return expression += c; }
+char& MathExpression::operator[](int i) { return expression[i]; }
+char MathExpression::operator[](int i) const { return expression[i]; }
 
+MathExpression MathExpression::operator+=(char c) { return expression += c; }
+MathExpression MathExpression::operator+=(std::string symbol) {
+  return expression += symbol;
+}
 std::string::iterator MathExpression::begin() { return expression.begin(); }
 std::string::iterator MathExpression::end() { return expression.end(); }
 
@@ -23,56 +25,45 @@ int MathExpression::precedence(char someOperator) {
     return binaryOperators[someOperator].precedence;
   }
 }
-int MathExpression::precedence(std::string someOperator) {
-  char symbol = unaryOp[someOperator].symbolDenotingUnaryOperation;
-  return unaryOperators[symbol].precedence;
-}
 
-bool MathExpression::isLetter(char symbol) {
-  return std::isalpha(static_cast<unsigned char>(symbol));
-}
 bool MathExpression::isUnaryMinus(MathExpression& inputString, int i) {
   return (inputString[i] == '-') &&
          (i == 0 || inputString[i - 1] == '(' ||
-          inputString.isBinaryOperator(inputString[i - 1]));
+          inputString.isBinaryOperator(inputString[i - 1]) ||
+          inputString.isUnaryOperator(inputString[i - 1]));
 }
-bool MathExpression::isUnaryOperator(char symbol) {
-  return (unaryOperators.find(symbol) != unaryOperators.end());
+bool MathExpression::isUnaryOperator(char symbol) const {
+  return unaryOperators.find(symbol) != unaryOperators.end();
 }
-bool MathExpression::isUnaryOperator(std::string symbol) {
-  return (unaryOp.find(symbol) != unaryOp.end());
+bool MathExpression::isUnaryOperator(std::string symbol) const {
+  return charUnaryOperators.find(symbol) != charUnaryOperators.end();
 }
-bool MathExpression::isBinaryOperator(char symbol) {
-  return (binaryOperators.find(symbol) != binaryOperators.end());
+bool MathExpression::isBinaryOperator(char symbol) const {
+  return binaryOperators.find(symbol) != binaryOperators.end();
 }
 
-char MathExpression::getSymbolDenotingUnaryOperation(
-    std::string someOperation) {
-  return unaryOp[someOperation].symbolDenotingUnaryOperation;
+char MathExpression::getCharUnaryOperator(std::string someOperator) {
+  return charUnaryOperators[someOperator];
 }
-char MathExpression::getSymbolDenotingUnaryOperation(char someOperation) {
-  std::string s = std::string(1, someOperation);
-  return unaryOp[s].symbolDenotingUnaryOperation;
-}
-double MathExpression::getUnaryFunction(char someOperator, double x) {
+double MathExpression::calculateUnaryFunction(char someOperator, double x) {
   return unaryOperators[someOperator].function(x);
 }
-double MathExpression::getBinaryFunction(char someOperator, double a,
-                                         double b) {
+double MathExpression::calculateUnaryFunction(char someOperator, double a,
+                                              double b) {
   return binaryOperators[someOperator].function(a, b);
 }
 
 bool MathExpression::isOperand(char symbol) {
-  return isdigit(symbol) || symbol == ',' || symbol == '.' || symbol == 'p';
+  return isdigit(symbol) || symbol == '.' || isMath—onstants(symbol);
 }
 bool MathExpression::isMath—onstants(char symbol) {
-  return (math—onstants.find(symbol) != math—onstants.end());
+  return (mathConstants.find(symbol) != mathConstants.end());
 }
 bool MathExpression::isOpenParenthesis(char symbol) { return (symbol == '('); }
 bool MathExpression::isCloseParenthesis(char symbol) { return (symbol == ')'); }
 
-double MathExpression::getMath—onstant(char symbol) {
-  return math—onstants[symbol];
+double MathExpression::getMathConstantValue(char symbol) {
+  return mathConstants[symbol];
 }
 
 double MathExpression::Sin(double x) {
@@ -88,4 +79,8 @@ double MathExpression::division(double a, double b) {
     throw DivisionByZeroException();
   }
   return a / b;
+}
+int MathExpression::factorial(int n) {
+  if (n < 0) throw std::runtime_error("Negative factorial is not defined");
+  return (n <= 1) ? 1 : n * factorial(n - 1);
 }

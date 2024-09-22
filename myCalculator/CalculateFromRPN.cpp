@@ -9,7 +9,7 @@ CalculateFromRPN::CalculateFromRPN(RpnAlgorithm rpn) {
   answer = 0;
 }
 
-double CalculateFromRPN::evaluate() {
+double CalculateFromRPN::calculate() {
   for (int i = 0; i < rpnString.getSize(); i++) {
     if (rpnString[i] == ' ') {
       continue;
@@ -19,7 +19,7 @@ double CalculateFromRPN::evaluate() {
     if (rpnString.isOperand(rpnString[i])) {
       token = getToken(i);
       if (rpnString.isMathÑonstants(token[0])) {
-        stackWithOperands.push(rpnString.getMathÑonstant(token[0]));
+        stackWithOperands.push(rpnString.getMathConstantValue(token[0]));
       } else {
         stackWithOperands.push(std::stod(token));
       }
@@ -62,7 +62,7 @@ void CalculateFromRPN::calculateUnary(char token) {
   stackWithOperands.pop();
 
   double result;
-  result = rpnString.getUnaryFunction(token, firstOperand);
+  result = rpnString.calculateUnaryFunction(token, firstOperand);
   stackWithOperands.push(result);
 }
 
@@ -74,6 +74,6 @@ void CalculateFromRPN::calculateBinary(char token) {
   stackWithOperands.pop();
 
   double result;
-  result = rpnString.getBinaryFunction(token, firstOperand, secondOperand);
+  result = rpnString.calculateUnaryFunction(token, firstOperand, secondOperand);
   stackWithOperands.push(result);
 }

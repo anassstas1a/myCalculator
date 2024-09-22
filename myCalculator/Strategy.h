@@ -2,5 +2,5 @@
 class Strategy {
  public:
   virtual ~Strategy() = default;
-  virtual double result() = 0;
+  virtual double calculate() = 0;
 };

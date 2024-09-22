@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <sstream>
 #include <string>
 
 #include "CalculationEngine.h"
@@ -9,9 +10,15 @@
 class Calculator {
  private:
   MathExpression expression;
-  bool isBlank();
+  double answer = 0;
+  bool isSpace();
 
  public:
-  Calculator(std::string str);
-  double getAnswer();
+  Calculator(std::string str = "");
+  double calculate();
+  void addSymbol(std::string symbol);
+  void deleteSymbol();
+  std::string getDisplayText() const;
+  std::string getAnswer() const;
+  void clearExpression();
 };

@@ -11,5 +11,5 @@ class CalculationEngine {
  public:
   void setCalculationEngine(std::unique_ptr<Strategy> newCalculatorEngine);
   CalculationEngine(std::unique_ptr<Strategy> newCalculatorEngine);
-  double answer();
+  double calculate();
 };

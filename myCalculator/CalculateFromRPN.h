@@ -1,5 +1,4 @@
 #pragma once
-#include <functional>
 #include <iostream>
 #include <stack>
 #include <string>
@@ -22,5 +21,5 @@ class CalculateFromRPN : public ICalculate {
   virtual ~CalculateFromRPN();
   CalculateFromRPN();
   CalculateFromRPN(RpnAlgorithm rpn);
-  double evaluate() override;
+  double calculate() override;
 };
