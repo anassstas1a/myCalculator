@@ -34,6 +34,9 @@ void oneEmptyString();
 void zeroFactorial();
 
 class TestsRunner {
+ public:
+  void runTests();
+
  private:
   void additionTest();
   void subtractionTest();
@@ -43,7 +46,4 @@ class TestsRunner {
   void differentOperationsTest();
   void emptyStringTest();
   void factorialTest();
-
- public:
-  void runTests();
 };

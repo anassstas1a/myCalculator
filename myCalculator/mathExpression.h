@@ -17,6 +17,40 @@ struct implementationOfBinaryOperator {
 };
 
 class MathExpression {
+ public:
+  MathExpression();
+  MathExpression(std::string str);
+
+  const std::string& getExpression() const;
+  std::string& getExpression();
+  int getSize() const;
+  bool isEmpty() const;
+
+  char& operator[](int i);
+  char operator[](int i) const;
+  MathExpression operator+=(char c);
+  MathExpression operator+=(std::string symbol);
+  std::string::iterator begin();
+  std::string::iterator end();
+
+  int precedence(char symbol);
+
+  bool isUnaryMinus(MathExpression& inputString, int i);
+  bool isUnaryOperator(char symbol) const;
+  bool isUnaryOperator(std::string symbol) const;
+  bool isBinaryOperator(char symbol) const;
+
+  char getCharUnaryOperator(std::string someOperator);
+  double calculateUnaryFunction(char someOperator, double x);
+  double calculateUnaryFunction(char someOperator, double a, double b);
+
+  bool isOperand(char symbol);
+  bool isMath—onstants(char symbol);
+  bool isOpenParenthesis(char symbol);
+  bool isCloseParenthesis(char symbol);
+
+  double getMathConstantValue(char symbol);
+
  private:
   std::string expression;
 
@@ -55,38 +89,4 @@ class MathExpression {
   static double Cot(double x);
   static int factorial(int n);
   static double division(double a, double b);
-
- public:
-  MathExpression();
-  MathExpression(std::string str);
-
-  const std::string& getExpression() const;
-  std::string& getExpression();
-  int getSize() const;
-  bool isEmpty() const;
-
-  char& operator[](int i);
-  char operator[](int i) const;
-  MathExpression operator+=(char c);
-  MathExpression operator+=(std::string symbol);
-  std::string::iterator begin();
-  std::string::iterator end();
-
-  int precedence(char symbol);
-
-  bool isUnaryMinus(MathExpression& inputString, int i);
-  bool isUnaryOperator(char symbol) const;
-  bool isUnaryOperator(std::string symbol) const;
-  bool isBinaryOperator(char symbol) const;
-
-  char getCharUnaryOperator(std::string someOperator);
-  double calculateUnaryFunction(char someOperator, double x);
-  double calculateUnaryFunction(char someOperator, double a, double b);
-
-  bool isOperand(char symbol);
-  bool isMath—onstants(char symbol);
-  bool isOpenParenthesis(char symbol);
-  bool isCloseParenthesis(char symbol);
-
-  double getMathConstantValue(char symbol);
 };

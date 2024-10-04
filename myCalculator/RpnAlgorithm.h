@@ -8,6 +8,13 @@
 #include "Separator.h"
 
 class RpnAlgorithm : public IAlgorithm {
+ public:
+  RpnAlgorithm();
+  RpnAlgorithm(Separator separator);
+
+  MathExpression convertStringUsingAlgorithm() override;
+  MathExpression getOutputString();
+
  private:
   MathExpression inputString;
   MathExpression outputString;
@@ -16,11 +23,4 @@ class RpnAlgorithm : public IAlgorithm {
   bool isUnaryMinus(char symbol) { return symbol == '#'; }
   bool topOperatorHasHigherPrecedence(char someOperator);
   void appendTopOperatorToOutputString();
-
- public:
-  RpnAlgorithm();
-  RpnAlgorithm(Separator separator);
-
-  MathExpression convertStringUsingAlgorithm() override;
-  MathExpression getOutputString();
 };

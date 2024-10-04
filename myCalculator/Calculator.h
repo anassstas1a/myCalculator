@@ -8,11 +8,6 @@
 #include "RpnStrategy.h"
 
 class Calculator {
- private:
-  MathExpression expression;
-  double answer = 0;
-  bool isSpace();
-
  public:
   Calculator(std::string str = "");
   double calculate();
@@ -21,4 +16,11 @@ class Calculator {
   std::string getDisplayText() const;
   std::string getAnswer() const;
   void clearExpression();
+
+ private:
+  MathExpression expression;
+  double answer = 0;
+  bool isSpace();
+
+
 };

@@ -8,6 +8,12 @@
 #include "RpnAlgorithm.h"
 
 class CalculateFromRPN : public ICalculate {
+ public:
+  virtual ~CalculateFromRPN();
+  CalculateFromRPN();
+  CalculateFromRPN(RpnAlgorithm rpn);
+  double calculate() override;
+
  private:
   MathExpression rpnString;
   double answer;
@@ -16,10 +22,4 @@ class CalculateFromRPN : public ICalculate {
   std::string getToken(int& position);
   void calculateUnary(char token);
   void calculateBinary(char token);
-
- public:
-  virtual ~CalculateFromRPN();
-  CalculateFromRPN();
-  CalculateFromRPN(RpnAlgorithm rpn);
-  double calculate() override;
 };

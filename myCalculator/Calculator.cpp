@@ -24,9 +24,7 @@ bool Calculator::isSpace() {
   return std::all_of(expression.begin(), expression.end(), std::isspace);  //
 }
 void Calculator::addSymbol(std::string symbol) { expression += symbol; }
-void Calculator::deleteSymbol() {
-    expression.getExpression().pop_back();
-}
+void Calculator::deleteSymbol() { expression.getExpression().pop_back(); }
 
 std::string Calculator::getDisplayText() const {
   if (expression.isEmpty()) {

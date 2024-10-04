@@ -3,12 +3,12 @@
 
 #include "MathExpression.h"
 class Separator {
- private:
-  MathExpression inputString;
-  MathExpression outputString;
-
  public:
   Separator(MathExpression str) : inputString(str) {}
   MathExpression separate();
   MathExpression getOutputString();
+
+ private:
+  MathExpression inputString;
+  MathExpression outputString;
 };
