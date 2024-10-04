@@ -133,12 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Buttons.cpp" />
+    <ClCompile Include="..\UIcomponents\Button.cpp" />
+    <ClCompile Include="..\UIcomponents\Buttons.cpp" />
+    <ClCompile Include="..\UIcomponents\DisplayText.cpp" />
+    <ClCompile Include="..\UIcomponents\UIController.cpp" />
+    <ClCompile Include="..\UIcomponents\Window.cpp" />
     <ClCompile Include="CalculateFromRPN.cpp" />
     <ClCompile Include="CalculationEngine.cpp" />
     <ClCompile Include="Calculator.cpp" />
-    <ClCompile Include="DisplayText.cpp" />
     <ClCompile Include="DivisionByZeroException.cpp" />
     <ClCompile Include="MathExpression.cpp" />
     <ClCompile Include="main.cpp" />
@@ -146,17 +148,17 @@
     <ClCompile Include="RpnStrategy.cpp" />
     <ClCompile Include="Separator.cpp" />
     <ClCompile Include="Test.cpp" />
-    <ClCompile Include="UICalculator.cpp" />
-    <ClCompile Include="UIController.cpp" />
-    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Buttons.h" />
+    <ClInclude Include="..\UIcomponents\Button.h" />
+    <ClInclude Include="..\UIcomponents\Buttons.h" />
+    <ClInclude Include="..\UIcomponents\DisplayText.h" />
+    <ClInclude Include="..\UIcomponents\UIController.h" />
+    <ClInclude Include="..\UIcomponents\Window.h" />
     <ClInclude Include="CalculationEngine.h" />
     <ClInclude Include="Calculator.h" />
-    <ClInclude Include="DisplayText.h" />
     <ClInclude Include="DivisionByZeroException.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Separator.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="ICalculate.h" />
@@ -166,8 +168,9 @@
     <ClInclude Include="RpnAlgorithm.h" />
     <ClInclude Include="RpnStrategy.h" />
     <ClInclude Include="Test.h" />
-    <ClInclude Include="UIController.h" />
-    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="myCalculator.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,12 +1,12 @@
 ﻿#include <SFML/Graphics.hpp>
 #include <sstream>
 
-#include "Buttons.h"
+#include "../UIcomponents/Buttons.h"
+#include "../UIcomponents/DisplayText.h"
+#include "../UIcomponents/UIController.h"
+#include "../UIcomponents/Window.h"
 #include "Calculator.h"
-#include "DisplayText.h"
 #include "Separator.h"
-#include "UIController.h"
-#include "Window.h"
 #include "test.h"
 
 int main() {
